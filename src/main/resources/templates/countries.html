@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Countries</title>
+</head>
+<body>
+<table>
+    <thread>
+        <tr>
+            <th>Country Code</th>
+            <th>Name</th>
+            <th>Continent</th>
+            <th>Head of State</th>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="country : ${}"/>
+    </tbody>
+</table>
+</body>
+</html>

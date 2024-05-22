@@ -1,7 +1,7 @@
 package org.example.dungeonsanddebugerss.service;
 
 import org.example.dungeonsanddebugerss.model.entities.CityEntity;
-import org.example.dungeonsanddebugerss.model.exception.CityAlreadyExistsException;
+import org.example.dungeonsanddebugerss.model.exception.city.CityAlreadyExistsException;
 import org.example.dungeonsanddebugerss.model.respositories.CityEntityRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
