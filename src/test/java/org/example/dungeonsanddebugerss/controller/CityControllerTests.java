@@ -1,6 +1,6 @@
 package org.example.dungeonsanddebugerss.controller;
 
-import org.example.dungeonsanddebugerss.controllers.CityController;
+import org.example.dungeonsanddebugerss.controllers.rest.CityController;
 import org.example.dungeonsanddebugerss.model.entities.CityEntity;
 import org.example.dungeonsanddebugerss.model.entities.CountryEntity;
 import org.junit.jupiter.api.Assertions;
