@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update City</title>
+</head>
+<body>
+    <div th:insert="~{/fragments/header :: header}"></div>
+    <form th:action="@{/web/cities/update-city/{id}(id=${id})}" th:object="${city}" method="post">
+        <label for="id">City</label>
+        <input id="id" type="Integer" th:field="*{id}"/>
+        <br/>
+        <button type="submit">Update City </button>
+
+        <div th:insert="~{/fragments/footer :: footer}"></div>
+    </form>
+</body>
+</html>
