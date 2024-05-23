@@ -25,7 +25,7 @@ public class CityWebController {
         this.cityEntityRepository = cityEntityRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getCities(Model model) {
         model.addAttribute("cities", get10Cities(cityService.getAllCities()));
         return "cities";
