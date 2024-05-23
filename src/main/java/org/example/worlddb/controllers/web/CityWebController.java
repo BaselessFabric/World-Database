@@ -44,11 +44,16 @@ public class CityWebController {
 
     @GetMapping("/web/city/add-city")
     public String addCity(Model model) {
-        model.addAttribute("city", cityEntityRepository);
+        CityEntity newCity = new CityEntity();
+        model.addAttribute("city", newCity);
         return "add-city";
     }
-    /* @GetMapping("/save-city")
-    public String saveCity(Model model) {}*/
+
+     @PostMapping("/web/city/save-city")
+    public String saveCity(@ModelAttribute("city") CityEntity city) {
+        cityService.createCity(city);
+        return "redirect:/web/cities";
+     }
 
     @GetMapping("/web/city/delete/{id}")
     public String deleteCityById(@PathVariable Integer id) {
@@ -57,17 +62,16 @@ public class CityWebController {
         }
 
 
-    @GetMapping("/web/city/update/{id}")
+    @GetMapping("/web/city/edit/{id}")
     public String editCityById(@PathVariable Integer id, Model model) {
         CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
         model.addAttribute("city", cityToUpdate);
-        model.addAttribute("id", id);
         return "update-city";
     }
 
-    @PostMapping("city/update-city/{id}")
-    public String updateCity(@PathVariable Integer id, @ModelAttribute("city")  CityService cityService) {
-    CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
+    @PostMapping("/web/city/update/{id}")
+    public String updateCity(@ModelAttribute("city") CityEntity city) {
+    cityService.updateCity(city.getId(), city);
     return "redirect:/web/cities";
     }
 

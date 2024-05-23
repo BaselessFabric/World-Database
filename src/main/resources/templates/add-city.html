@@ -3,28 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Add City</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Add City</h1>
-<form th:action="@{/web/save-city}" th:object="${city}" method="post">
-    <label>ID
-        <input type="text" th:field="${city.id}"/>
-    </label>
-    <label>Name
-        <input type="text" th:field="${city.name}"/>
-    </label>
-    <label>CountryCode
-        <input type="text" th:field="${city.countryCode}"/>
-    </label>
-    <label>District
-        <input type="text" th:field="${city.district}"/>
-    </label>
-    <label> Population
-        <input type="text" th:field="${city.population}"/>
-    </label>
-    <br>
-    <button type="submit">add City</button>
+<div class="container">
+    <h1 class="center-align">Add City</h1>
+    <form th:action="@{/web/city/save-city}" th:object="${city}" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="city_id" th:field="${city.id}"/>
+                <label for="city_id">ID</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="city_name" th:field="${city.name}"/>
+                <label for="city_name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="country_code" th:field="${city.countryCode}"/>
+                <label for="country_code">Country Code</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="district" th:field="${city.district}"/>
+                <label for="district">District</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="population" th:field="${city.population}"/>
+                <label for="population">Population</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn waves-effect waves-light">Add City</button>
+            </div>
+        </div>
+    </form>
+</div>
 
-</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        M.updateTextFields();
+    });
+</script>
 </body>
 </html>
