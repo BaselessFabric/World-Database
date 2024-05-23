@@ -2,29 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Error: 500</title>
     <link th:href="@{/style.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-
 <div th:insert="~{/fragments/header :: header}"></div>
 
 <main class="main">
-    <h1>City</h1>
-    <div th:if="${city==null}">Author Not Found</div>
-    <div th:if="${city!=null}">
-        <h1>country.: country code</h1>
-        <h3>Continent : Region</h3>
-        <h3>Head of State : Government form</h3>
-        <h3>Population</h3>
-    </div>
+    <section class="home section" id="home">
+        <div class="home-container container grid">
+            <div class="home-data">
+                <h1 class="home-title">Something went wrong!</h1>
+                <h3 class="home-subtitle">Error 500: Internal Server Issue.</h3>
+                <p class="home-description">The server encountered an unexpected condition that prevented it from fulfilling the request. Sorry about that!</p>
+            </div>
+        </div>
+    </section>
+
 </main>
-
-
 
 <div th:insert="~{/fragments/footer :: footer}"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 </body>
 </html>
