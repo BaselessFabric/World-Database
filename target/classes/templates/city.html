@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>City</h1>
+<div th:if="${city==null}">Author Not Found</div>
+<div th:if="${city!=null}">
+    <h1>country.: country code</h1>
+    <h3>Continent : Region</h3>
+    <h3>Head of State : Government form</h3>
+    <h3>Population</h3>
+</div>
 </body>
 </html>

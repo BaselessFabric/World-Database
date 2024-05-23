@@ -34,7 +34,7 @@ JDK 21, JUnit, Mockito, SpringBoot, Spring Reactive Web, Rest Repositories, Mari
 main
 │
 ├── java
-│   └── org.example.dungeonsanddebugerss
+│   └── org.example.worlddb
 │       ├── controllers
 │       ├── model
 │       ├── service
@@ -47,7 +47,7 @@ main
 test
 │
 ├── java
-│   └── org.example.dungeonsanddebugerss
+│   └── org.example.worlddb
 │       ├── controller
 │       ├── service
 │       └── DungeonsAndDebugerssApplicationTest
