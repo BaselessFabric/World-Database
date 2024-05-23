@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.example</groupId>
-    <artifactId>DungeonsAndDebugerss</artifactId>
+    <artifactId>world-db-spring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>DungeonsAndDebugerss</name>
     <description>DungeonsAndDebugerss</description>
