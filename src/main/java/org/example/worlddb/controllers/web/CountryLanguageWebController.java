@@ -4,6 +4,7 @@ import org.example.worlddb.model.entities.CountryLanguageEntity;
 import org.example.worlddb.model.repositories.CountryLanguageEntityRepository;
 import org.example.worlddb.service.CountryLanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,14 @@ public class CountryLanguageWebController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteCountryLanguage(@PathVariable CountryLanguageEntity id) {
         countryLanguageService.getCountryLanguageById(id.getId()).ifPresent(countryLanguage -> countryLanguageService.deleteCountryLanguage(countryLanguage.getId()));
         return "redirect:/country-languages";
     }
 
     @GetMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editCountryLanguage(@PathVariable CountryLanguageEntity id, Model model) {
         CountryLanguageEntity languageToUpdate = countryLanguageService.getCountryLanguageById(id.getId()).orElse(null);
         model.addAttribute("language", languageToUpdate);

@@ -4,6 +4,7 @@ import org.example.worlddb.model.entities.CountryEntity;
 import org.example.worlddb.model.repositories.CountryEntityRepository;
 import org.example.worlddb.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
@@ -35,6 +36,7 @@ public class CountryWebController {
     }
 
     @GetMapping("/web/country/delete/{code}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteCountry(@PathVariable String code) {
         CountryEntity countryToDelete = countryService.getCountryByCode(code).orElse(null);
         if (countryToDelete != null) {
@@ -44,18 +46,21 @@ public class CountryWebController {
     }
 
     @GetMapping("/web/add-country")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addBook(Model model) {
         CountryEntity country = new CountryEntity();
         model.addAttribute("country", country);
         return "add-country";
     }
     @PostMapping("/web/save-country")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveCountry(@ModelAttribute("country") CountryEntity country) {
         countryEntityRepository.save(country);
         return "redirect:/web/countries";
     }
 
     @PostMapping("/web/country/update/{code}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateCountry(@PathVariable String code,String newName,String newContinent,String newRegion, Integer newCapital) {
         CountryEntity updatedCountry = new CountryEntity();
        updatedCountry.setName(newName);
