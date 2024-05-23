@@ -27,8 +27,9 @@
             <td th:text="${lang.getId().getLanguage()}"></td>
             <td th:text="${lang.getIsOfficial()}"></td>
             <td th:text="${lang.getPercentage()}"></td>
-            <td><a th:href="@{/web/country-languages/delete/{id}(id=${lang.id})}">Delete</a></td>
-            <td><a th:href="@{/web/country-languages/edit/{id}(id=${lang.id})}">Edit</a></td>
+            <td><a th:href="@{/web/country-languages/delete(countryCode=${lang.id.countryCode},language=${lang.id.language})}">Delete</a></td>
+            <td><a th:href="@{/web/country-languages/edit(countryCode=${lang.id.countryCode},language=${lang.id.language})}">Edit</a></td>
+
         </tr>
         </tbody>
     </table>
@@ -36,5 +37,5 @@
 
 <div th:insert="~{/fragments/footer :: footer}"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+</body>
 </html>

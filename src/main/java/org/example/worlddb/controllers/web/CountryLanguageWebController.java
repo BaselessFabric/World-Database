@@ -1,6 +1,7 @@
 package org.example.worlddb.controllers.web;
 
 import org.example.worlddb.model.entities.CountryLanguageEntity;
+import org.example.worlddb.model.entities.CountryLanguageEntityId;
 import org.example.worlddb.model.repositories.CountryLanguageEntityRepository;
 import org.example.worlddb.service.CountryLanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,29 +19,34 @@ public class CountryLanguageWebController {
         this.countryLanguageService = countryLanguageService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getCountryLanguages(Model model) {
         model.addAttribute("languages", countryLanguageService.getAllCountryLanguages());
         return "country-language";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteCountryLanguage(@PathVariable CountryLanguageEntity id) {
-        countryLanguageService.getCountryLanguageById(id.getId()).ifPresent(countryLanguage -> countryLanguageService.deleteCountryLanguage(countryLanguage.getId()));
-        return "redirect:/country-languages";
+    @GetMapping("/delete")
+    public String deleteCountryLanguage(@RequestParam String countryCode,@RequestParam String language) {
+        countryLanguageService.getCountryLanguageById(countryCode, language).ifPresent(countryLanguage -> countryLanguageService.deleteCountryLanguage(countryLanguage.getId()));
+        return "redirect:/web/country-languages";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editCountryLanguage(@PathVariable CountryLanguageEntity id, Model model) {
-        CountryLanguageEntity languageToUpdate = countryLanguageService.getCountryLanguageById(id.getId()).orElse(null);
+    @GetMapping("/edit")
+    public String editCountryLanguage(@RequestParam String countryCode, @RequestParam String language, Model model) {
+        CountryLanguageEntity languageToUpdate = countryLanguageService.getCountryLanguageById(countryCode, language).orElse(null);
         model.addAttribute("language", languageToUpdate);
-        return "/save-edit";
+        return "edit-language";
     }
 
-//    @PostMapping("/save-edit/{id}")
-//    public String saveCountryLanguage(@PathVariable CountryLanguageEntity id, @ModelAttribute("language") CountryLanguageEntity countryLanguage) {
-//
-//
-//    C}
+    @PostMapping("/edit-language")
+    public String saveCountryLanguage(@ModelAttribute("language") CountryLanguageEntity countryLanguage) {
+
+    CountryLanguageEntity languageToUpdate = countryLanguageService.getCountryLanguageById(countryLanguage.getId().getCountryCode(), countryLanguage.getId().getLanguage()).orElse(null);
+    languageToUpdate.setCountryCode(countryLanguage.getCountryCode());
+    languageToUpdate.setPercentage(countryLanguage.getPercentage());
+    languageToUpdate.setIsOfficial(countryLanguage.getIsOfficial());
+    return "redirect:/web/country-languages";
+    }
+
 
 }

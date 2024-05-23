@@ -30,6 +30,10 @@ public class CountryLanguageService {
         return countrylanguageEntityRepository.findById(id);
     }
 
+    public Optional<CountryLanguageEntity> getCountryLanguageById(String countryCode, String language){
+        return countrylanguageEntityRepository.findCountryLanguageEntityById_LanguageAndId_CountryCode(language, countryCode);
+    }
+
     public CountryLanguageEntity updateCountryLanguage(CountryLanguageEntityId id, CountryLanguageEntity updatedCountryLanguage) {
         Optional<CountryLanguageEntity> countryLanguageOptional = countrylanguageEntityRepository.findById(id);
         if (countryLanguageOptional.isPresent()) {
@@ -53,4 +57,5 @@ public class CountryLanguageService {
             return false;
         }
     }
+
 }
