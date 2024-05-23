@@ -28,8 +28,8 @@
             <td th:text="${city.countryCode.name}"></td>
             <td th:text="${city.district}"></td>
             <td th:text="${city.population}"></td>
-            <td><a th:href="@{/web/delete/{id}(id=${city.id})}">Delete</a></td>
-            <!--   <td><a th:href="@{/web/update/{id}(id=${city.id})}">Edit</a></td> -->
+            <td><a th:href="@{/web/city/delete/{id}(id=${city.id})}">Delete</a></td>
+           <td><a th:href="@{/web/city/update/{id}(id=${city.id})}">Edit</a></td>
         </tr>
         </tbody>
     </table>

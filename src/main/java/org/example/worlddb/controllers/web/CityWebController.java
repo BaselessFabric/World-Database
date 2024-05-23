@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/web/cities")
+//@RequestMapping("/web/cities")
 public class CityWebController {
 
 
@@ -25,16 +25,10 @@ public class CityWebController {
         this.cityEntityRepository = cityEntityRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("/web/cities")
     public String getCities(Model model) {
         model.addAttribute("cities", get10Cities(cityService.getAllCities()));
         return "cities";
-    }
-
-    //
-    @GetMapping("/header")
-    public String getHeaders(Model model) {
-        return "index";
     }
 
 
@@ -42,23 +36,28 @@ public class CityWebController {
         return cities.subList(0, 10);
     }
 
-    @GetMapping("/add-city")
+    @GetMapping("/web/city/{id}")
+    public String getCity(@PathVariable Integer id, Model model) {
+        model.addAttribute("city", cityService.getCityById(id).orElse(null));
+        return "city";
+    }
+
+    @GetMapping("/web/city/add-city")
     public String addCity(Model model) {
-        CityEntityRepository cityEntityRepository1 = cityEntityRepository;
-        model.addAttribute("city", cityEntityRepository1);
+        model.addAttribute("city", cityEntityRepository);
         return "add-city";
     }
     /* @GetMapping("/save-city")
     public String saveCity(Model model) {}*/
 
-    @GetMapping("/delete/{id}")
-    public String deleteCityById(@PathVariable Integer id, Model model) {
+    @GetMapping("/web/city/delete/{id}")
+    public String deleteCityById(@PathVariable Integer id) {
     cityService.getCityById(id).ifPresent(cityToDelete->cityService.deleteCity(id));
         return "redirect:/web/cities";
         }
 
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/web/city/update/{id}")
     public String editCityById(@PathVariable Integer id, Model model) {
         CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
         model.addAttribute("city", cityToUpdate);
@@ -66,7 +65,7 @@ public class CityWebController {
         return "update-city";
     }
 
-    @PostMapping("/update-city/{id}")
+    @PostMapping("city/update-city/{id}")
     public String updateCity(@PathVariable Integer id, @ModelAttribute("city")  CityService cityService) {
     CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
     return "redirect:/web/cities";
