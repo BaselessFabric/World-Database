@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:href="@{/style.css}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Update Country</title>
 </head>
 <body>
-<div th:insert="~{/fragments/header :: header}"></div>
-<div th:insert="~{/fragments/footer :: footer}"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+<h1>Update Country</h1>
+<form th:action="@{/web/country/update/{code}(code=${code})}" th:object="${country}" method="post">
+    <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <label>Country Code
+        <input type="text" th:field="${country.code}"/>
+    </label><br>
+    <label>Region
+        <input type="text" th:field="${country.region}"/>
+    </label><br>
+    <label>Continent
+        <input type="text" th:field="${country.continent}"/>
+    </label><br>
+    <label>Head of State
+        <input type="text" th:field="${country.headOfState}"/>
+    </label><br>
+    <label>Population
+        <input type="number" th:field="${country.population}"/>
+    </label><br>
+    <h4>Additional Info:</h4>
+    <label>Capital City ID
+        <input type="number" th:field="${country.capital}"/>
+    </label><br>
+    <label>Local Name
+        <input type="text" th:field="${country.localName}"/>
+    </label><br>
+    <label>Independence Year
+        <input type="number" th:field="${country.indepYear}"/>
+    </label><br>
+    <label>Government Type
+        <input type="text" th:field="${country.governmentForm}"/>
+    </label><br>
+    <label>Life Expectancy
+        <input type="number" th:field="${country.lifeExpectancy}"/>
+    </label><br>
+    <label>Surface Area
+        <input type="number" th:field="${country.surfaceArea}"/>
+    </label><br>
+    <label>GNP
+        <input type="number" th:field="${country.gnp}"/>
+    </label><br>
+    <label>GNP Old
+        <input type="number" th:field="${country.GNPOld}"/>
+    </label><br>
+    <label>Code 2
+        <input type="text" th:field="${country.code2}"/>
+    </label><br>
+    <button type="submit">Edit</button>
+</form>
 </body>
 </html>

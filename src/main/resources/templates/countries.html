@@ -18,6 +18,7 @@
                 <th>Continent</th>
                 <th>Head of State</th>
                 <th>Population</th>
+                <th>Delete</th>
             </tr>
         </thread>
         <tbody>
@@ -28,8 +29,8 @@
             <td th:text="${country.getHeadOfState()}"></td>
             <td th:text="${country.getPopulation()}"></td>
 
-            <!--        <td><a th:href="@{/web/delete/{code}(id=${country.code})}">Delete</a></td>-->
-            <!--        <td><a th:href="@{/web/update/{code}(id=${country.code})}">Edit</a></td>-->
+            <td><a th:href="@{/web/country/delete/{code}(code=${country.code})}">Delete</a></td>
+            <td><a th:href="@{/web/country/edit/{code}(code=${country.code})}">Edit</a></td>
         </tr>
         </tbody>
     </table>
