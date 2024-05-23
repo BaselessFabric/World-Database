@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Country</title>
+</head>
+<body>
+<h1>Add Country</h1>
+<form th:action="@{/web/save-country}" th:object="${country}" method="post">
+    <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <label>Region
+        <input type="text" th:field="${country.region}"/>
+    </label><br>
+    <label>Continent
+        <input type="text" th:field="${country.continent}"/>
+    </label><br>
+    <label>Head of State
+        <input type="text" th:field="${country.headOfState}"/>
+    </label><br>
+    <label>Population
+        <input type="text" th:field="${country.population}"/>
+   </label><br>
+    <h4>Additional Info:</h4>
+ <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <label>Name
+        <input type="text" th:field="${country.name}"/>
+    </label><br>
+    <button type="submit">Register</button>
+</body>
+</html>

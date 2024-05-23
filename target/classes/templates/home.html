@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<main class="main">
+    <section class="home section" id="home">
+        <div class="home-container container grid">
+            <div class="home-data">
+                <h1 class="home-title">WorldDB Explorer</h1>
+                <h3 class="home-subtitle">Welcome to the WorldDB Explorer web app!</h3>
+                <p class="home-description">Discover global insights effortlessly with our World DB Explorer,
+                    a powerful web application designed for seamless searching and querying of the MySQL World database.
+                    Access detailed information on countries, cities, and languages with intuitive search functionality and user-friendly interface.
+                    Whether you're a researcher, student, or data enthusiast, WorldDB Explorer makes exploring geographical and demographic data easy and efficient.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

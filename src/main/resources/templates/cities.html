@@ -1,9 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cities</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
+
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<main class="main">
+    <table>
+        <thread>
+            <tr>
+                <th>City Id </th>
+                <th>Name</th>
+                <th>Country Code</th>
+                <th>District</th>
+                <th>Population</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="city : ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td th:text="${city.countryCode.name}"></td>
+            <td th:text="${city.district}"></td>
+            <td th:text="${city.population}"></td>
+            <td><a th:href="@{/web/delete/{id}(id=${city.id})}">Delete</a></td>
+            <!--   <td><a th:href="@{/web/update/{id}(id=${city.id})}">Edit</a></td> -->
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
