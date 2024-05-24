@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Add City</title>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{/fragments/header :: header}"></div>
 <div class="container">
-    <h1 class="center-align">Add City</h1>
-    <form th:action="@{/web/city/save-city}" th:object="${city}" method="post">
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="text" id="city_id" th:field="${city.id}"/>
-                <label for="city_id">ID</label>
-            </div>
+    <div class="row">
+        <div class="col s6">
+            <h1 class="left-align">Add City</h1>
         </div>
+    </div>
+    <form th:action="@{/web/city/save-city}" th:object="${city}" method="post">
         <div class="row">
             <div class="input-field col s12">
                 <input type="text" id="city_name" th:field="${city.name}"/>
@@ -36,7 +34,7 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="population" th:field="${city.population}"/>
+                <input type="number" id="population" th:field="${city.population}"/>
                 <label for="population">Population</label>
             </div>
         </div>
@@ -48,10 +46,8 @@
     </form>
 </div>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-
     document.addEventListener('DOMContentLoaded', function() {
         M.updateTextFields();
     });

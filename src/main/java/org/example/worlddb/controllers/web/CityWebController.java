@@ -75,7 +75,5 @@ public class CityWebController {
     return "redirect:/web/cities";
     }
 
-
-
 }
 
