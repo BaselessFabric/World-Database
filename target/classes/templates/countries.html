@@ -15,16 +15,24 @@
             <tr>
                 <th>Country Code</th>
                 <th>Name</th>
+                <th>Capital</th>
                 <th>Continent</th>
                 <th>Head of State</th>
                 <th>Population</th>
-                <th>Delete</th>
+
             </tr>
         </thread>
         <tbody>
         <tr th:each="country : ${countries}">
-            <td th:text="${country.code}"></td>
+<!--            <td th:text="${country.code}"></td>-->
+            <td>
+                <a th:href="@{/web/country/{code}(code=${country.code})}" th:text="${country.code}">N/A</a>
+            </td>
             <td th:text="${country.name}"></td>
+            <td th:text="${country.capital}"></td>
+            <td>
+                <a th:href="@{/web/city/{code}(id=${country.capital})}" th:text="${country.code}">N/A</a>
+            </td>
             <td th:text="${country.getContinent()}"></td>
             <td th:text="${country.getHeadOfState()}"></td>
             <td th:text="${country.getPopulation()}"></td>

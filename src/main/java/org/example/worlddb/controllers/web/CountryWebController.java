@@ -1,7 +1,9 @@
 package org.example.worlddb.controllers.web;
 
+import org.example.worlddb.model.entities.CityEntity;
 import org.example.worlddb.model.entities.CountryEntity;
 import org.example.worlddb.model.repositories.CountryEntityRepository;
+import org.example.worlddb.service.CityService;
 import org.example.worlddb.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,14 @@ import java.util.Optional;
 public class CountryWebController {
     private final CountryService countryService;
     private final CountryEntityRepository countryEntityRepository;
+    private final CityService cityService;
 
     @Autowired
-    public CountryWebController(CountryService countryService, CountryEntityRepository countryEntityRepository) {
+    public CountryWebController(CountryService countryService, CountryEntityRepository countryEntityRepository, CityService cityService) {
         this.countryService = countryService;
         this.countryEntityRepository = countryEntityRepository;
+        this.cityService = cityService;
+
     }
 
     @GetMapping("/web/countries")
@@ -60,7 +65,7 @@ public class CountryWebController {
     }
 
     // show the html page with the edit form
-    @GetMapping("/web/country/edit/{code}")     //Yall good!!  //BUILDING  //test the edit
+    @GetMapping("/web/country/edit/{code}")
     public String editCountry(@PathVariable String code, Model model) {
         Optional<CountryEntity> country = countryService.getCountryByCode(code);
         if (country.isPresent()) {
@@ -70,7 +75,7 @@ public class CountryWebController {
     }
 
     @PostMapping("/web/country/update/{code}")
-            public String updateCountry(@ModelAttribute("country") CountryEntity country){
+    public String updateCountry(@ModelAttribute("country") CountryEntity country){
         countryService.updateCountry(country.getCode(), country);
         return "redirect:/web/countries";
     }
