@@ -1,5 +1,5 @@
 <h1>World-DB-Spring-REST</h1>
-World-DB-Spring 'Elite Seven' consisting of Murad, Alex, Oliver, Imogen, Patrick, Irina and Daniell 👋.
+World-DB-Spring 'Stranger Strings' consisting of Murad, Alex, Oliver, Imogen, Patrick, Irina and Daniell 👋.
 
 ## Project Overview
 This project creates a Java application that uses an SQL database which contains a list of countries and cities, along with other details.
