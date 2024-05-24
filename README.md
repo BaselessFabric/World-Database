@@ -104,30 +104,5 @@ Open the project directory: "WorldDB" and open the class "App". Ensure the sprin
         SpringApplication.run(WorldDbApplication.class, args);
     }
 ```
-```
-          <dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-    <version>2.1.0</version>
-        </dependency>
-```
-In order for swagger to work with Spring WebFlux application ensure that springdoc-openapi-webflux depdency is inside the pom.xml file. For more information on how to install swagger onto your project please use the following guide:
-<br></br>
-https://www.baeldung.com/spring-rest-openapi-documentation
-<br></br>
-![image](https://github.com/HowardC04/World-DB-Spring-REST/assets/167005819/c05ca051-cc18-4ec0-9a58-092332eeaff1)
-
-Within the Swagger you can see that we have our crud methods grouped togther. Swaggar allows users to input endpoints to see how the server responds, it will include the status codes, response body and response headers
-When using Swagger UI it shows the curl that was submitted and the response section shows the JSON response from the
-endpoints on the tomcat server.
-
-
-In addition to this swagger allows you to input an API key to test any authorization filters within the server.
-
-To enhance maintainability we created logging functionality using java.util.logging. Our colour-coded logger allows you to easily track the flow of the program, record the state when an important event happens and capture errors or exceptions that occur during runtime. This can be used through the Log class and it's static methods.
-
-
-##  
-
 📫 If you encounter any bugs, please open up an issue to let us know.
 Alternatively, we welcome suggestions for any updates or improvements you would like to see! 
