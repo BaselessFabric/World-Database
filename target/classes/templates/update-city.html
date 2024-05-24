@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update City</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<div class="container">
+    <h3 class="center-align">Update City</h3>
+    <form th:action="@{/web/city/update/{id}(id=${id})}" th:object="${city}" method="post">
+
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="id" type="number" th:field="*{id}"/>
+                <label for="id">City ID</label>
+            </div>
+        </div>
+
+        <label>Name
+            <input type="text" th:field="${city.name}"/>
+        </label><br>
+
+        <label>Country Code
+            <input type="text" th:field="${city.countryCode}"/>
+        </label><br>
+
+        <label>District
+            <input type="text" th:field="${city.district}"/>
+        </label><br>
+
+        <label>Population
+            <input type="text" th:field="${city.population}"/>
+        </label><br>
+
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn waves-effect waves-light">Update City</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+
+<!-- Import Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    // Initialize Materialize components
+    document.addEventListener('DOMContentLoaded', function () {
+        M.updateTextFields();
+    });
+</script>
+</body>
+</html>

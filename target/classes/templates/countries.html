@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Countries</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<main class="main">
+
+<section class="table-title" id="table">
+        <h2 class="section-title">Countries</h2>
+        <span class="section-subtitle">Every country in WorldDB</span>
+        <div class="table-data">
+    <table>
+        <thread>
+            <tr>
+                <th>Country Code</th>
+                <th>Name</th>
+                <th>Capital</th>
+                <th>Continent</th>
+                <th>Head of State</th>
+                <th>Population</th>
+
+            </tr>
+            <div class="col s6 right-align" style="margin-top: 20px;">
+                <a href="/web/country/add" class="btn waves-effect waves-light">Add New Country</a>
+            </div>
+        </thread>
+        <tbody>
+        <tr th:each="country : ${countries}">
+<!--            <td th:text="${country.code}"></td>-->
+            <td>
+                <a th:href="@{/web/country/{code}(code=${country.code})}" th:text="${country.code}">N/A</a>
+            </td>
+            <td th:text="${country.name}"></td>
+            <td th:text="${country.capital}"></td>
+<!--            <td>-->
+<!--                <a th:href="@{/web/city/{code}(id=${country.capital})}" th:text="${country.capital}">N/A</a>-->
+<!--            </td>-->
+            <td th:text="${country.getContinent()}"></td>
+            <td th:text="${country.getHeadOfState()}"></td>
+            <td th:text="${country.getPopulation()}"></td>
+
+            <td><a th:href="@{/web/country/delete/{code}(code=${country.code})}">Delete</a></td>
+            <td><a th:href="@{/web/country/edit/{code}(code=${country.code})}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
+                  </div>
+    </section>
+</main>
+
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

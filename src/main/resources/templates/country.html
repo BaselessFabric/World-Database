@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Country</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="center-align" th:text="${country.name} + ': ' + ${country.code}"></h1>
+    <div class="card">
+        <div class="card-content">
+            <h4 class="center-align">Location:</h4>
+            <p class="center-align" th:if="${country.getRegion()} == ${country.getContinent()}" th:text="${country.getRegion()}"></p>
+            <p class="center-align" th:unless="${country.getRegion()} == ${country.getContinent()}" th:text="${country.getRegion()} + ', ' + ${country.getContinent()}"></p>
+            <h4 class="center-align">Leadership</h4>
+            <p class="center-align" th:text="${country.getHeadOfState()}"></p>
+            <p class="center-align" th:text="${country.getGovernmentForm()}"></p>
+            <p class="center-align" th:text="'Year of independance: ' + ${country.getIndepYear()}"></p>
+            <h4 class="center-align">Statistics:</h4>
+            <p class="center-align" th:text="'Population: ' + ${country.population}"></p>
+            <p class="center-align" th:text="'average life expectancy: ' + ${country.lifeExpectancy}"></p>
+            <p class="center-align" th:text="'Surface Area: ' + ${country.getSurfaceArea()}"></p>
+            <p class="center-align" th:text="'Gross National Product: ' + ${country.getGnp()} + ',   GNP Old: ' + ${country.getGNPOld()}"></p>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

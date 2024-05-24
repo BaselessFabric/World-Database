@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h1>Edit language</h1>
+<form th:action="@{/web/country-languages/edit-language}" th:object="${languageObj}" method="post">
+    <label>Country Code
+        <input type="text" th:field="*{id.countryCode}"/>
+    </label><br>
+    <label>Language
+        <input type="text" th:field="*{id.language}"/>
+    </label><br>
+    <label>Official status
+        <input type="text" th:field="*{isOfficial}"/>
+    </label><br>
+    <label>percentage
+        <input type="text" th:field="*{percentage}"/>
+    </label><br>
+    <p></p>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+
+
+<main class="main">
+    <section class="table-title" id="table">
+        <h2 class="section-title">Countries</h2>
+        <span class="section-subtitle">Every country in WorldDB</span>
+        <div class="table-data">
+    <table>
+        <thead>
+        <tr>
+            <th>Country Code</th>
+            <th>Language</th>
+            <th>Official</th>
+            <th>Percentage</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lang : ${languages}">
+            <td th:text="${lang.getCountryCode().getCode()}"></td>
+            <td th:text="${lang.getId().getLanguage()}"></td>
+            <td th:text="${lang.getIsOfficial()}"></td>
+            <td th:text="${lang.getPercentage()}"></td>
+            <td><a th:href="@{/web/country-languages/delete(countryCode=${lang.id.countryCode},language=${lang.id.language})}">Delete</a></td>
+            <td><a th:href="@{/web/country-languages/edit(countryCode=${lang.id.countryCode},language=${lang.id.language})}">Edit</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+        </div>
+    </section>
+</main>
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

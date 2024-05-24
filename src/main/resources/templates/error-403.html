@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error: 403</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+
+<main class="main">
+    <section class="home section" id="home">
+        <div class="home-container container grid">
+            <div class="home-data">
+                <h1 class="home-title">Something went wrong!</h1>
+                <h3 class="home-subtitle">Error 403: Forbidden.</h3>
+                <p class="home-description">Sorry about that!</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div th:insert="~{/fragments/footer :: footer}"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

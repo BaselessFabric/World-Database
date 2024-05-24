@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Country</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Update Country</h1>
+    <form th:action="@{/web/country/update/{code}(code=${code})}" th:object="${country}" method="post">
+        <div class="card">
+            <div class="card-content">
+                <div class="input-field">
+                    <input type="text" th:field="${country.name}" id="name"/>
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.code}" id="code"/>
+                    <label for="code">Country Code</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.region}" id="region"/>
+                    <label for="region">Region</label>
+                </div>
+                <div class="input-field">
+                    <select th:field="${country.continent}" id="continent">
+                        <option value="Asia">Asia</option>
+                        <option value="Africa">Africa</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Antarctica">Antarctica</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                    <label for="continent">Continent</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.headOfState}" id="headOfState"/>
+                    <label for="headOfState">Head of State</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.population}" id="population"/>
+                    <label for="population">Population</label>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h4>Additional Info:</h4>
+                <div class="input-field">
+                    <input type="number" th:field="${country.capital}" id="capital"/>
+                    <label for="capital">Capital City ID</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.localName}" id="localName"/>
+                    <label for="localName">Local Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.indepYear}" id="indepYear"/>
+                    <label for="indepYear">Independence Year</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.governmentForm}" id="governmentForm"/>
+                    <label for="governmentForm">Government Type</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.lifeExpectancy}" id="lifeExpectancy"/>
+                    <label for="lifeExpectancy">Life Expectancy</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.surfaceArea}" id="surfaceArea"/>
+                    <label for="surfaceArea">Surface Area</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.gnp}" id="gnp"/>
+                    <label for="gnp">GNP</label>
+                </div>
+                <div class="input-field">
+                    <input type="number" th:field="${country.GNPOld}" id="GNPOld"/>
+                    <label for="GNPOld">GNP Old</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" th:field="${country.code2}" id="code2"/>
+                    <label for="code2">Code 2</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Edit</button>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>
+</body>
+</html>
