@@ -56,6 +56,13 @@
 }
 
 /* html basics */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 html {
          scroll-behavior: smooth;
 }
@@ -96,6 +103,30 @@ img {
     max-width: 100%;
     height: auto;
 }
+.table-data{
+    align-content: center;
+}
+
+.table-data table{
+    overflow: hidden;
+    width: 60%;
+    margin: 0px auto;
+
+    border-collapse: collapse;
+}
+
+
+th, td {
+    border: 1px solid;
+    border-color: var(--first-color);
+    padding: 8px;
+    text-align: left;
+}
+
+th{
+    background-color: var(--body-color);
+}
+
 
 /* reusable css classes  */
 .section {
@@ -130,3 +161,39 @@ img {
 }
 
 
+
+/*med devices*/
+@media screen and (min-width: 768px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .section {
+        padding: 6rem 0 2rem;
+    }
+
+    .section-subtitle {
+        margin-bottom: 4rem;
+    }
+
+    .header {
+        top: 0;
+        bottom: initial;
+    }
+}
+
+
+
+/*large devices*/
+@media screen and (min-width: 1024px) {
+    .header,
+    .main,
+    .footer-container {
+        padding: 0;
+    }
+}
