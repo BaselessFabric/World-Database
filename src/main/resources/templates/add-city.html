@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add City</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/fragments/header :: header}"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s6">
+            <h1 class="left-align">Add City</h1>
+        </div>
+    </div>
+    <form th:action="@{/web/city/save-city}" th:object="${city}" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="city_name" th:field="${city.name}"/>
+                <label for="city_name">Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="country_code" th:field="${city.countryCode}"/>
+                <label for="country_code">Country Code</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="district" th:field="${city.district}"/>
+                <label for="district">District</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="number" id="population" th:field="${city.population}"/>
+                <label for="population">Population</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn waves-effect waves-light">Add City</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        M.updateTextFields();
+    });
+</script>
+</body>
+</html>

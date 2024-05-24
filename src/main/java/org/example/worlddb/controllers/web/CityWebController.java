@@ -4,7 +4,6 @@ import org.example.worlddb.model.entities.CityEntity;
 import org.example.worlddb.model.repositories.CityEntityRepository;
 import org.example.worlddb.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/web/cities")
+//@RequestMapping("/web/cities")
 public class CityWebController {
 
 
@@ -26,16 +25,10 @@ public class CityWebController {
         this.cityEntityRepository = cityEntityRepository;
     }
 
-    @GetMapping("")
+    @GetMapping("/web/cities")
     public String getCities(Model model) {
         model.addAttribute("cities", get10Cities(cityService.getAllCities()));
         return "cities";
-    }
-
-    //
-    @GetMapping("/header")
-    public String getHeaders(Model model) {
-        return "index";
     }
 
 
@@ -43,41 +36,44 @@ public class CityWebController {
         return cities.subList(0, 10);
     }
 
-    @GetMapping("/add-city")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/web/city/{id}")
+    public String getCity(@PathVariable Integer id, Model model) {
+        model.addAttribute("city", cityService.getCityById(id).orElse(null));
+        return "city";
+    }
+
+    @GetMapping("/web/city/add-city")
     public String addCity(Model model) {
-        CityEntityRepository cityEntityRepository1 = cityEntityRepository;
-        model.addAttribute("city", cityEntityRepository1);
+        CityEntity newCity = new CityEntity();
+        model.addAttribute("city", newCity);
         return "add-city";
     }
-    /* @GetMapping("/save-city")
-    public String saveCity(Model model) {}*/
 
-    @GetMapping("/delete/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String deleteCityById(@PathVariable Integer id, Model model) {
+     @PostMapping("/web/city/save-city")
+    public String saveCity(@ModelAttribute("city") CityEntity city) {
+        cityService.createCity(city);
+        return "redirect:/web/cities";
+     }
+
+    @GetMapping("/web/city/delete/{id}")
+    public String deleteCityById(@PathVariable Integer id) {
     cityService.getCityById(id).ifPresent(cityToDelete->cityService.deleteCity(id));
         return "redirect:/web/cities";
         }
 
 
-    @GetMapping("/update/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/web/city/edit/{id}")
     public String editCityById(@PathVariable Integer id, Model model) {
         CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
         model.addAttribute("city", cityToUpdate);
-        model.addAttribute("id", id);
         return "update-city";
     }
 
-    @PostMapping("/update-city/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String updateCity(@PathVariable Integer id, @ModelAttribute("city")  CityService cityService) {
-    CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
+    @PostMapping("/web/city/update/{id}")
+    public String updateCity(@ModelAttribute("city") CityEntity city) {
+    cityService.updateCity(city.getId(), city);
     return "redirect:/web/cities";
     }
-
-
 
 }
 

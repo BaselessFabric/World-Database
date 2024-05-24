@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add City</title>
+</head>
+<body>
+<h1>Add City</h1>
+<form th:action="@{/web/save-city}" th:object="${city}" method="post">
+    <label>ID
+        <input type="text" th:field="${city.id}"/>
+    </label>
+    <label>Name
+        <input type="text" th:field="${city.name}"/>
+    </label>
+    <label>CountryCode
+        <input type="text" th:field="${city.countryCode}"/>
+    </label>
+    <label>District
+        <input type="text" th:field="${city.district}"/>
+    </label>
+    <label> Population
+        <input type="text" th:field="${city.population}"/>
+    </label>
+    <br>
+    <button type="submit">add City</button>
+
+</form>
+</body>
+</html>

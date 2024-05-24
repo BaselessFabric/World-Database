@@ -11,34 +11,28 @@
 <div th:insert="~{/fragments/header :: header}"></div>
 
 <main class="main">
-    <section class="table-section" id="table">
-        <h2 class="section-title">Cities</h2>
-        <span class="section-subtitle">Every city in WorldDB</span>
-        <div class="table-data">
-            <table>
-                <thead>
-                    <tr>
-                        <th>City Id </th>
-                        <th>Name</th>
-                        <th>Country Code</th>
-                        <th>District</th>
-                        <th>Population</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr th:each="city : ${cities}">
-                    <td th:text="${city.id}"></td>
-                    <td th:text="${city.name}"></td>
-                    <td th:text="${city.countryCode.name}"></td>
-                    <td th:text="${city.district}"></td>
-                    <td th:text="${city.population}"></td>
-                    <td><a th:href="@{/web/delete/{id}(id=${city.id})}">Delete</a></td>
-                    <!--   <td><a th:href="@{/web/update/{id}(id=${city.id})}">Edit</a></td> -->
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <table>
+        <thread>
+            <tr>
+                <th>City Id </th>
+                <th>Name</th>
+                <th>Country Code</th>
+                <th>District</th>
+                <th>Population</th>
+            </tr>
+        </thread>
+        <tbody>
+        <tr th:each="city : ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td th:text="${city.countryCode.name}"></td>
+            <td th:text="${city.district}"></td>
+            <td th:text="${city.population}"></td>
+            <td><a th:href="@{/web/city/delete/{id}(id=${city.id})}">Delete</a></td>
+           <td><a th:href="@{/web/city/update/{id}(id=${city.id})}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
 </main>
 
 
