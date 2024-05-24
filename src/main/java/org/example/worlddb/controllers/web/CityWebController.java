@@ -4,6 +4,7 @@ import org.example.worlddb.model.entities.CityEntity;
 import org.example.worlddb.model.repositories.CityEntityRepository;
 import org.example.worlddb.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class CityWebController {
         this.cityEntityRepository = cityEntityRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getCities(Model model) {
         model.addAttribute("cities", get10Cities(cityService.getAllCities()));
         return "cities";
@@ -43,6 +44,7 @@ public class CityWebController {
     }
 
     @GetMapping("/add-city")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String addCity(Model model) {
         CityEntityRepository cityEntityRepository1 = cityEntityRepository;
         model.addAttribute("city", cityEntityRepository1);
@@ -52,6 +54,7 @@ public class CityWebController {
     public String saveCity(Model model) {}*/
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteCityById(@PathVariable Integer id, Model model) {
     cityService.getCityById(id).ifPresent(cityToDelete->cityService.deleteCity(id));
         return "redirect:/web/cities";
@@ -59,6 +62,7 @@ public class CityWebController {
 
 
     @GetMapping("/update/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editCityById(@PathVariable Integer id, Model model) {
         CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
         model.addAttribute("city", cityToUpdate);
@@ -67,6 +71,7 @@ public class CityWebController {
     }
 
     @PostMapping("/update-city/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateCity(@PathVariable Integer id, @ModelAttribute("city")  CityService cityService) {
     CityEntity cityToUpdate = cityService.getCityById(id).orElse(null);
     return "redirect:/web/cities";
