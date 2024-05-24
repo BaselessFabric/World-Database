@@ -18,7 +18,7 @@ public class CountryLanguageWebController {
         this.countryLanguageService = countryLanguageService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String getCountryLanguages(Model model) {
         model.addAttribute("languages", countryLanguageService.getAllCountryLanguages());
         return "country-language";
