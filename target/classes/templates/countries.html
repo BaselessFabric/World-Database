@@ -11,7 +11,7 @@
 
 <main class="main">
 
-                                   <section class="table-title" id="table">
+<section class="table-title" id="table">
         <h2 class="section-title">Countries</h2>
         <span class="section-subtitle">Every country in WorldDB</span>
         <div class="table-data">
@@ -26,6 +26,9 @@
                 <th>Population</th>
 
             </tr>
+            <div class="col s6 right-align" style="margin-top: 20px;">
+                <a href="/web/country/add" class="btn waves-effect waves-light">Add New Country</a>
+            </div>
         </thread>
         <tbody>
         <tr th:each="country : ${countries}">
@@ -35,9 +38,9 @@
             </td>
             <td th:text="${country.name}"></td>
             <td th:text="${country.capital}"></td>
-            <td>
-                <a th:href="@{/web/city/{code}(id=${country.capital})}" th:text="${country.code}">N/A</a>
-            </td>
+<!--            <td>-->
+<!--                <a th:href="@{/web/city/{code}(id=${country.capital})}" th:text="${country.capital}">N/A</a>-->
+<!--            </td>-->
             <td th:text="${country.getContinent()}"></td>
             <td th:text="${country.getHeadOfState()}"></td>
             <td th:text="${country.getPopulation()}"></td>
@@ -49,7 +52,6 @@
     </table>
                   </div>
     </section>
-
 </main>
 
 

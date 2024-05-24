@@ -27,14 +27,12 @@ public class CityWebController {
 
     @GetMapping("/web/cities")
     public String getCities(Model model) {
-        model.addAttribute("cities", get10Cities(cityService.getAllCities()));
+        model.addAttribute("cities", cityService.getAllCities());
         return "cities";
     }
 
 
-    private List<CityEntity> get10Cities(List<CityEntity> cities) {
-        return cities.subList(0, 10);
-    }
+
 
     @GetMapping("/web/city/{id}")
     public String getCity(@PathVariable Integer id, Model model) {
