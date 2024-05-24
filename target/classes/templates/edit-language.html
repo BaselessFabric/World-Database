@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Edit language</h1>
-<form th:action="@{/web/edit-language}" th:object="${language}" method="post">
+<form th:action="@{/web/country-languages/edit-language}" th:object="${languageObj}" method="post">
     <label>Country Code
         <input type="text" th:field="*{id.countryCode}"/>
     </label><br>
@@ -19,6 +19,7 @@
     <label>percentage
         <input type="text" th:field="*{percentage}"/>
     </label><br>
+    <p></p>
     <button type="submit">Register</button>
 </form>
 </body>
